@@ -131,16 +131,27 @@ export const getById = async (req, res) => {
 };
 export const getContact = async (req, res) => {
   try {
+    // const { page, limit = 10 } = req.query;
+    // const skip = (page - 1) * limit;
     const userId = req.userId;
     const prisma = new PrismaClient();
 
     const userContacts = await prisma.contact.findMany({
       where: {
         userId: userId,
+        // skip: skip,
+        // take: Number(limit),
       },
     });
 
-    res.json(userContacts)
+    // const totalContacts = await prisma.userContacts.count();
+    // const totalPages = Math.ceil(totalContacts/limit)
+    res.json(
+      userContacts,
+      // totalContacts,
+      // totalPages
+
+    );
   } catch (e) {
     res.status(404).json({ msg: `Error while fetching contacts ${e}` });
   }

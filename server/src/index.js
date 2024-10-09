@@ -1,11 +1,13 @@
 import express from "express";
 import dotenv from "dotenv";
-dotenv.config();
-const app = express();
 import userRouter from "./routes/userRouter.js";
-//import { env } from "process";
 import contactRouter from "./routes/contactRouter.js";
+import authRouter from "./routes/authRouter.js";
+const app = express();
+dotenv.config();
 app.use(express.json());
+
+app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/contact", contactRouter);
 
