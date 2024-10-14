@@ -74,7 +74,8 @@ export const loginUser = async (req, res) => {
         process.env.JWT_SECRET,
         { expiresIn: "1h" }
       );
-      return res.json({ loginToken });
+      res.cookie("token", loginToken)
+      .json({msg :"User logined ..."})
     } else {
       res.json({ msg: `Either email or password is incorrect!!!` });
     }
@@ -82,3 +83,7 @@ export const loginUser = async (req, res) => {
     res.status(401).json({ msg: `login process failed ${error}` });
   }
 };
+
+export const logoutUser = async (req,res) =>{
+  res.clearCookie("token").json({msg:"User logout"})
+}
