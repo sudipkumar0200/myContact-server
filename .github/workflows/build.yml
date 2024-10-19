@@ -15,6 +15,9 @@ jobs:
         with:
           node-version: '20.11.1'
       
+      - name: install prisma cli
+        run: npm install -g prisma
+        
       - name: Install Dependencies
         run: npm install
 
