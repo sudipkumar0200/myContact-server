@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "prisma:generate": "npx prisma generate",
+    "prisma:generate": "prisma generate",
     "start": "node ./src/index.js",
     "lint": "eslint",
     "dev": " nodemon ./src/index.js"
