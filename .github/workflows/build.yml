@@ -16,8 +16,8 @@ jobs:
           node-version: '20.11.1'
       
       - name: install prisma cli
-        run: npm install -g prisma
-        
+        run: npm install -g prisma eslint
+
       - name: Install Dependencies
         run: npm install
 
