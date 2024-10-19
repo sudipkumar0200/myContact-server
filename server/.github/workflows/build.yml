@@ -1,0 +1,27 @@
+name: Build check on PR
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.11.1'
+      
+      - name: Install Dependencies
+        run: npm install
+
+      - name: dataBase schema generateion
+        run: npm run prisma:generate
+
+      - name: code linting 
+        run: npm run lint
+
+    

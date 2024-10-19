@@ -34,7 +34,7 @@ export const registerUser = async (req, res) => {
       },
     });
     //  console.log(hashPass)
-    res.status(201).json(`hashed password ${hashPass}`);
+    res.status(201).send(user);
   } catch (e) {
     res.status(401).json({
       msg: `error while Regesteration , please try again ${e}`,

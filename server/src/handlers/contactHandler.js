@@ -1,9 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import Hash from "bcrypt";
-import jwt from "jsonwebtoken";
 import { validContact, upValidContact } from "../middleware/typeValid.js";
-// import { use } from "bcrypt/promises.js";
-const { sign } = jwt;
 
 export const createContact = async (req, res) => {
   const prisma = new PrismaClient();
@@ -50,8 +46,8 @@ export const updateContact = async (req, res) => {
     console.log(body);
     const { success } = upValidContact.safeParse(body);
     if (!success) {
-      c.status(400);
-      return c.json({ error: "invalid input!!" });
+      res.status(400)
+      .json({ error: "invalid input!!" });
     }
     console.log("before updation..");
     const upContact = await prisma.contact.update({
@@ -93,7 +89,7 @@ export const deleteContact = async (req, res) => {
       return c.json({ error: "invalid input!!" });
     }*/
     // console.log("before updation..")
-    const delContact = await prisma.contact.delete({
+    await prisma.contact.delete({
       where: {
         id: body.id,
         userId: userId,
