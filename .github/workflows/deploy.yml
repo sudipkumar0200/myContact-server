@@ -39,4 +39,4 @@ jobs:
           sudo docker pull rencho0200/mycontact-server:latest
           sudo docker stop web-server || true
           sudo docker rm web-server || true
-          sudo docker run -d --name web-server -p 8000:8000 -e ${{secrets.DATABASE_URL}} -e ${{secrets.PORT}} -e ${{secrets.JWT_SECRET}} rencho0200/mycontact-server:latest
+          sudo docker run -d --name web-server -p 8000:8000 -e ${{secrets.DATABASE_URL}} -e ${{secrets.JWT_SECRET}} rencho0200/mycontact-server:latest
