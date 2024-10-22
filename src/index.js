@@ -16,7 +16,7 @@ app.use("/api/v1/contact", contactRouter);
 app.use("/api/v1/contactTag", contactTagRouter);
 
 "hello"
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server running on PORT ${PORT}`);
 });
